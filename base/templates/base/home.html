@@ -11,8 +11,20 @@
     <div class="images">
         {% for image in images %}
         <div class="image-wrapper">
-            <img src="{{ image.image.url }}" alt="{{ image.description }}">
-        </div>  
+            <img class="picture" src="{{ image.image.url }}" alt="{{ image.description }}">
+        </div> 
+        <div class="modal" data-modal>
+            <div class="image">
+                <img class="picture" src="{{ image.image.url }}" alt="{{ image.description }}">
+            </div>
+            <div class="details">
+                <div class="desc"> <i class='bx bxs-book-content'></i> {{ image.description }}</div>
+                <div class="desc"> <i class='bx bxs-map'></i> {{ image.location }}</div>
+                <div class="desc"> <i class='bx bxs-carousel'></i> {{ image.category }}</div>
+                <div class="desc"> <i class='bx bxs-stopwatch'></i> {{ image.updated }}</div>
+                <div class="desc"> <i class='bx bxs-calendar'></i> {{ image.created }}</div>
+            </div>
+        </div> 
         {% endfor %}
     </div>
 </main>

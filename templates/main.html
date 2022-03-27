@@ -8,9 +8,9 @@
 
     <title>Gallery App</title>
     <link rel="stylesheet" href="{% static 'styles/main.css' %}">
-    {% block link %} 
-    
-    {% endblock %}
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <script defer src="{% static 'javascript/app.js' %}"></script>
+    {% block link %}{% endblock %}
 </head>
 <body>
         {% include 'navbar.html' %}
