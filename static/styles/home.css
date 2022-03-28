@@ -41,13 +41,13 @@ img{
     font-size: 1.3rem;
     color: white;
 }
-
+/* Modal */
 .modal{
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, 500%);
-    background-color: hsl(80, 4%, 73%);
+    background-color: hsl(38, 4%, 62%);
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
@@ -71,7 +71,7 @@ img{
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: hsla(0, 0%, 100%, 0.4);
+    background-color: hsla(0, 0%, 100%, 0.6);
     pointer-events: none;
     transition: 0.8s ease;
 }
@@ -90,11 +90,11 @@ img{
 
 .desc{
     padding: 1rem;
-    background-color: hsl(80, 5%, 76%);
-    color: hsl(0, 0%, 0%);
+    background-color: hsl(38, 5%, 65%);
+    color: #7b7975;
 }
 
 .tooltip{
     font-size: 1rem;
-    color: hsl(80, 2%, 34%);
+    color: hsl(0, 0%, 0%);
 }

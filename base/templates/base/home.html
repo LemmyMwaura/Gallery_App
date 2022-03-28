@@ -10,15 +10,19 @@
     <div class="images">
         {% for image in images %} 
         <div class="image-wrapper">
+            {% if image.image.url is not None  %}
             <img class="picture" src="{{ image.image.url }}" alt="{{ image.description }}">
+            {% endif %}
             <div class="edits">
-                <a href="{% url 'update-image' image.id %}"><i class='bx bx-edit edit-tooltip'></i></a>
+                <!-- <a href="{% url 'update-image' image.id %}"><i class='bx bx-edit edit-tooltip'></i></a> -->
                 <a href="{% url 'delete-image' image.id %}"><i class='bx bx-trash edit-tooltip'></i></a>
             </div>
         </div>
         <div class="modal" data-modal>
             <div class="image">
+                {% if image.image.url is not None  %}
                 <img class="modal-pic" src="{{ image.image.url }}" alt="{{ image.description }}">
+                {% endif %}
             </div>
             <div class="details">
                 <div class="desc"> <i class='bx bxs-book-content tooltip'></i>{{ image.description }}</div>

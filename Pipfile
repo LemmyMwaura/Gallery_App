@@ -10,6 +10,8 @@ cloudinary = "*"
 python-decouple = "*"
 dj-database-url = "*"
 django-heroku = "*"
+pillow = "*"
+django-cloudinary-storage = "*"
 
 [dev-packages]
 

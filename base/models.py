@@ -1,9 +1,8 @@
 from django.db import models
-from django.shortcuts import redirect
 from cloudinary.models import CloudinaryField
 class Image(models.Model):
     image = CloudinaryField('image')
-    description = models.TextField(null=True, blank=True)
+    description = models.TextField(null=True)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
     location = models.ForeignKey("Location", on_delete=models.CASCADE, null=True)
@@ -43,8 +42,19 @@ class Location(models.Model):
     def __str__(self):
         return self.name
 
+    def save_image(self):
+        self.save()
+
+    def delete_image(self):
+        self.delete()
 class Category(models.Model):
     name = models.CharField(max_length=200)
 
     def __str__(self):
         return self.name
+    
+    def save_image(self):
+        self.save()
+
+    def delete_image(self):
+        self.delete()
