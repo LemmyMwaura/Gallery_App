@@ -1,3 +1,70 @@
 body{
-    background: yellow;
+    background: white;
+}
+
+.images{
+    display: grid;
+    gap:10px;
+    grid-auto-columns: 1fr;
+}
+
+img{
+    aspect-ratio: 12/8;
+    max-width: 450px;
+}
+
+.modal{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 500%);
+    background-color: hsl(80, 4%, 73%);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    column-gap: 0.8rem;
+    border-radius: 0.5rem;
+    padding: 2rem;
+    z-index: 10;
+    width: 60vw;
+    max-width: 80%;
+    transition: 0.8s ease;
+}
+
+.modal.active{
+    transform: translate(-50%, -50%);
+}
+.overlay{
+    position: fixed;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: hsla(0, 0%, 100%, 0.4);
+    pointer-events: none;
+    transition: 0.8s ease;
+}
+
+.overlay.active{
+    pointer-events: all;
+    opacity: 1;
+}
+
+.details{
+    justify-self:flex-end;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+}
+
+.desc{
+    padding: 1rem;
+    background-color: hsl(80, 5%, 76%);
+    color: hsl(0, 0%, 0%);
+}
+
+.tooltip{
+    font-size: 1rem;
+    color: hsl(80, 2%, 34%);
 }
