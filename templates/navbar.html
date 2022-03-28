@@ -1,6 +1,10 @@
-<a href="{% url 'home' %}">Home</a>
-<a href="{% url 'add-image' %}">Add Image</a>
-<form action="{% url 'home' %}" method="GET">
-    <input type="text" name="q">
-    <input type="submit" value="search">
-</form>
+{% load static %}
+
+<nav class="nav">
+    <a href="{% url 'home' %}" class="nav-logo">Gallery App</a>
+    <a href="{% url 'add-image' %}" class="nav-logo">Add Image</a>
+    <form action="{% url 'home' %}" class="search-form" method="GET">
+        <input type="text" name="q">
+        <button type="submit" class="search-btn"><i class='bx bx-search search-form-tooltip'></i></button>
+    </form>
+</nav>

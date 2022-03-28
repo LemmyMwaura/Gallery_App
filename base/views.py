@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Image
+from .models import Category, Image, Location
 from .forms import ImageForm
 
 def home(request):
@@ -10,15 +10,17 @@ def home(request):
     return render(request, 'base/home.html', context)
 
 def add_image(request):
-    form = ImageForm()
+    categories = Category.objects.all()
+    locations = Location.objects.all()
 
+    form = ImageForm()
     if request.method == 'POST':
         form = ImageForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('home')
 
-    context = {'form':form }
+    context = {'form':form,'categories':categories, 'locations':locations }
     return render(request, 'base/image_form.html', context)
 
 def delete_image(request, pk):
@@ -32,15 +34,17 @@ def delete_image(request, pk):
     return render(request, 'base/delete.html', context)
 
 def update_image(request, pk):
+    categories = Category.objects.all()
+    locations = Location.objects.all()
+
     image = Image.update_image(pk)
     form = ImageForm(instance=image)
-
     if request.method == "POST":
         form = ImageForm(request.POST, instance=image)
         if form.is_valid():
             form.save()
             return redirect('home')
 
-    context = { 'form': form }
+    context = { 'form': form, 'categories':categories, 'locations':locations }
     return render(request, 'base/image_form.html', context)
 

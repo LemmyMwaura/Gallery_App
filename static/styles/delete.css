@@ -1,0 +1,29 @@
+main{
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: calc(100vh - 6rem);
+    overflow: hidden;
+}
+
+.delete-form{
+    background-color: hsl(80, 4%, 73%);
+    border-radius: 0.5rem;
+    padding: 2rem;
+}
+
+span{
+    color: black;
+}
+
+.delete-footer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.delete-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

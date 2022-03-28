@@ -7,14 +7,13 @@
 
 {% block content %}
 <main>
-    <h1> Home </h1>
     <div class="images">
         {% for image in images %} 
         <div class="image-wrapper">
             <img class="picture" src="{{ image.image.url }}" alt="{{ image.description }}">
             <div class="edits">
-                <a href="{% url 'update-image' image.id %}">Edit</a>
-                <a href="{% url 'delete-image' image.id %}">Delete</a>
+                <a href="{% url 'update-image' image.id %}"><i class='bx bx-edit edit-tooltip'></i></a>
+                <a href="{% url 'delete-image' image.id %}"><i class='bx bx-trash edit-tooltip'></i></a>
             </div>
         </div>
         <div class="modal" data-modal>
@@ -25,12 +24,12 @@
                 <div class="desc"> <i class='bx bxs-book-content tooltip'></i>{{ image.description }}</div>
                 <div class="desc"> <i class='bx bxs-map tooltip'></i>{{ image.location }}</div>
                 <div class="desc"> <i class='bx bxs-carousel tooltip'></i>{{ image.category }}</div>
-                <div class="desc"> <i class='bx bxs-stopwatch tooltip'></i>{{ image.updated }}</div>
-                <div class="desc"> <i class='bx bxs-calendar tooltip'></i>{{ image.created }}</div>
+                <div class="desc"> <i class='bx bxs-stopwatch tooltip'></i>{{ image.updated|timesince }} ago </div>
+                <div class="desc"> <i class='bx bxs-calendar tooltip'></i>{{ image.created|timesince }} ago </div>
             </div>
         </div> 
-        <div class="overlay" id="overlay"></div>
         {% endfor %}
+        <div class="overlay" id="overlay"></div>    
     </div>
 </main>
 {% endblock %}
