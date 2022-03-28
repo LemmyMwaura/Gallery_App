@@ -13,6 +13,7 @@
         <div class="image-wrapper">
             <img class="picture" src="{{ image.image.url }}" alt="{{ image.description }}">
             <div class="edits">
+                <a href="{% url 'update-image' image.id %}">Edit</a>
                 <a href="{% url 'delete-image' image.id %}">Delete</a>
             </div>
         </div>
