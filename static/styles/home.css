@@ -4,13 +4,13 @@ body{
 
 .images{
     display: grid;
-    gap:10px;
-    grid-auto-columns: 1fr;
+    gap:5px;
+    grid-template-columns:repeat(auto-fill, minmax(400px, 1fr));
 }
 
 img{
-    aspect-ratio: 12/8;
-    max-width: 450px;
+    /* aspect-ratio: 12/8; */
+    max-width: 400px;
 }
 
 .modal{
@@ -34,6 +34,7 @@ img{
 .modal.active{
     transform: translate(-50%, -50%);
 }
+
 .overlay{
     position: fixed;
     opacity: 0;
