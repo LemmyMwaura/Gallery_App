@@ -1,4 +1,5 @@
 from django.db import models
+from django.shortcuts import redirect
 from cloudinary.models import CloudinaryField
 class Image(models.Model):
     image = CloudinaryField('image')
@@ -20,11 +21,13 @@ class Image(models.Model):
     def delete_image(self):
         self.delete()
 
-    def update_image():
-        pass
+    @classmethod
+    def update_image(cls,pk):
+        return Image.objects.get(id=pk)
 
-    def get_image_by_id(self,id):
-        return self.objects.get(id=id)
+    @classmethod
+    def get_image_by_id(cls,pk):
+        return cls.objects.get(id=pk)
 
     @classmethod
     def search_image(cls,category):
