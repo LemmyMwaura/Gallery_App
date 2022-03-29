@@ -12,7 +12,7 @@ class Image(models.Model):
         return self.description
 
     class Meta:
-        ordering = ['-updated']
+        ordering = ['-updated', '-created']
 
     def save_image(self):
         self.save()
@@ -22,7 +22,7 @@ class Image(models.Model):
 
     @classmethod
     def update_image(cls,pk):
-        return Image.objects.get(id=pk)
+        return cls.objects.get(id=pk)
 
     @classmethod
     def get_image_by_id(cls,pk):
@@ -42,10 +42,10 @@ class Location(models.Model):
     def __str__(self):
         return self.name
 
-    def save_image(self):
+    def save_location(self):
         self.save()
 
-    def delete_image(self):
+    def delete_location(self):
         self.delete()
 class Category(models.Model):
     name = models.CharField(max_length=200)
@@ -53,8 +53,8 @@ class Category(models.Model):
     def __str__(self):
         return self.name
     
-    def save_image(self):
+    def save_category(self):
         self.save()
 
-    def delete_image(self):
+    def delete_category(self):
         self.delete()

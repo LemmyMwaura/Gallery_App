@@ -12,6 +12,8 @@ dj-database-url = "*"
 django-heroku = "*"
 pillow = "*"
 django-cloudinary-storage = "*"
+gunicorn = "*"
+whitenoise = "*"
 
 [dev-packages]
 
