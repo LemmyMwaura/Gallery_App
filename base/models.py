@@ -51,6 +51,7 @@ class Location(models.Model):
     @classmethod
     def update_location(cls,pk):
         return cls.objects.get(id=pk)
+        
 class Category(models.Model):
     name = models.CharField(max_length=200)
 

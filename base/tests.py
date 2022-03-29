@@ -1,3 +1,4 @@
+from unicodedata import category
 from django.test import TestCase
 from .models import Image, Location, Category
 class TestGalleryApp(TestCase):
@@ -77,16 +78,26 @@ class TestGalleryApp(TestCase):
         '''
         test_update_image test case to test if the image object to be updated is queried
         '''
-        self.image = Image.objects.create(
-            image='/image/location', 
-            description='a cool image', 
-            location=Location.objects.get(name='Nairobi'), 
-            category=Category.objects.get(name='Fashion')
-        )
-        image = Image.update_image(1)
-        self.assertEqual(image.id, 1)
+        self.image.save()
+        new_image = Image.update_image(1)
+        self.assertEqual(new_image.id, 1)
 
+    # def get_image_by_id():
+    #     pass
 
+    def test_search_image(self):
+        '''
+        Filter Image by its category
+        '''
+        self.image.save()
+        self.category.save()
+        self.location.save()
+        all_instances_of_category = Image.search_image('Fashion')
+        self.assertEqual(len(all_instances_of_category), 1)
+
+    # def filter_by_location(cls,location):
+    #     pass
+    
         
 
         
