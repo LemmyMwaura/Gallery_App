@@ -1,6 +1,17 @@
 from django.test import TestCase
 from .models import Image, Location, Category
 class TestGalleryApp(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        '''
+        Sets up the default ID field for the Object below in the database. (Django doesn't reset auto ID fields 
+        for each test case)
+        '''
+        cls.obj_id = Image.objects.create(
+            image='/image/location', 
+            description='a cool image',
+        ).pk 
+
     def setUp(self):
         '''
         The setup method will run before each test case
@@ -52,7 +63,7 @@ class TestGalleryApp(TestCase):
         locations = Location.objects.all()
         Categories = Category.objects.all()
 
-        self.assertEqual(len(images), 2)
+        self.assertEqual(len(images), 3)
         self.assertEqual(len(locations), 2)
         self.assertEqual(len(Categories), 2)
 
@@ -64,7 +75,7 @@ class TestGalleryApp(TestCase):
         # Images
         self.image.delete_image()
         images = Image.objects.all()
-        self.assertEqual(len(images), 0)
+        self.assertEqual(len(images), 1)
 
         # locatiom
         self.location.delete_location()
@@ -76,21 +87,20 @@ class TestGalleryApp(TestCase):
         categories = Category.objects.all()
         self.assertEqual(len(categories), 0)
 
-    # def test_update_image(self):
-    #     '''
-    #     test_update_image test case to test if the image object to be updated is queried
-    #     '''
-    #     self.image.save()
-    #     new_image = Image.update_image(1)
-    #     self.assertEqual(new_image.id, 1)
+    def test_update_image(self):
+        '''
+        test_update_image test case to test if the image object to be updated is queried
+        '''
+        new_image = Image.update_image(self.obj_id)
+        self.assertEqual(new_image.id, 1)
 
-    # def test_get_image_by_id(self):
-    #     '''
-    #     test_update_image test case to test if the image object can be queried by its ID
-    #     '''
-    #     self.image.save()
-    #     get_image_by_id = Image.get_image_by_id(1)
-    #     self.assertEqual(get_image_by_id.id, 1)
+    def test_get_image_by_id(self):
+        '''
+        test_update_image test case to test if the image object can be queried by its ID
+        '''
+        self.image.save()
+        get_image_by_id = Image.get_image_by_id(self.obj_id)
+        self.assertEqual(get_image_by_id.id, 1)
 
     def test_search_image(self):
         '''
