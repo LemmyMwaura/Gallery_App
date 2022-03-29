@@ -36,19 +36,16 @@ class TestGalleryApp(TestCase):
         test_save_image test case to test if the image object is saved into
         the db.
         '''
-        # images
         self.image.save_image()
-        images = Image.objects.all()
-        self.assertEqual(len(images), 1)
-
-        # location
         self.location.save_location()
-        locations = Location.objects.all()
-        self.assertEqual(len(locations), 1)
-
-        # categories
         self.category.save_category()
+
+        images = Image.objects.all()
+        locations = Location.objects.all()
         Categories = Category.objects.all()
+
+        self.assertEqual(len(images), 1)
+        self.assertEqual(len(locations), 1)
         self.assertEqual(len(Categories), 1)
 
     def test_delete_objects(self):
@@ -82,8 +79,8 @@ class TestGalleryApp(TestCase):
         new_image = Image.update_image(1)
         self.assertEqual(new_image.id, 1)
 
-    # def get_image_by_id():
-    #     pass
+    def get_image_by_id():
+        pass
 
     def test_search_image(self):
         '''
@@ -91,7 +88,6 @@ class TestGalleryApp(TestCase):
         '''
         self.image.save()
         self.category.save()
-        self.location.save()
         all_instances_of_category = Image.search_image('Fashion')
         self.assertEqual(len(all_instances_of_category), 1)
 
@@ -100,7 +96,6 @@ class TestGalleryApp(TestCase):
         test_filter_by_location test case to test if the image object is filtered by its location
         '''
         self.image.save()
-        self.category.save()
         self.location.save()
         all_instances_of_location = Image.filter_by_location('Nairobi')
         self.assertEqual(len(all_instances_of_location), 1)
