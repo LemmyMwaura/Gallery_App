@@ -1,4 +1,3 @@
-from unicodedata import category
 from django.test import TestCase
 from .models import Image, Location, Category
 class TestGalleryApp(TestCase):
@@ -36,17 +35,26 @@ class TestGalleryApp(TestCase):
         test_save_image test case to test if the image object is saved into
         the db.
         '''
-        self.image.save_image()
-        self.location.save_location()
-        self.category.save_category()
+        self.location_2 = Location(name='Mombasa')
+        self.category_2 = Category(name='Coding')
+        self.location_2.save_location()
+        self.category_2.save_category()
+
+        self.image_2 = Image(
+            image='/image/route', 
+            description='coding is cool', 
+            location=Location.objects.get(name='Mombasa'), 
+            category=Category.objects.get(name='Coding')
+        )
+        self.image_2.save_image()
 
         images = Image.objects.all()
         locations = Location.objects.all()
         Categories = Category.objects.all()
 
-        self.assertEqual(len(images), 1)
-        self.assertEqual(len(locations), 1)
-        self.assertEqual(len(Categories), 1)
+        self.assertEqual(len(images), 2)
+        self.assertEqual(len(locations), 2)
+        self.assertEqual(len(Categories), 2)
 
     def test_delete_objects(self):
         '''
@@ -54,40 +62,40 @@ class TestGalleryApp(TestCase):
         the db.
         '''
         # Images
-        self.image.save_image()
         self.image.delete_image()
         images = Image.objects.all()
         self.assertEqual(len(images), 0)
 
         # locatiom
-        self.location.save_location()
         self.location.delete_location()
         locations = Location.objects.all()
         self.assertEqual(len(locations), 0)
 
         # category
-        self.category.save_category()
         self.category.delete_category()
         categories = Category.objects.all()
         self.assertEqual(len(categories), 0)
 
-    def test_update_image(self):
-        '''
-        test_update_image test case to test if the image object to be updated is queried
-        '''
-        self.image.save()
-        new_image = Image.update_image(1)
-        self.assertEqual(new_image.id, 1)
+    # def test_update_image(self):
+    #     '''
+    #     test_update_image test case to test if the image object to be updated is queried
+    #     '''
+    #     self.image.save()
+    #     new_image = Image.update_image(1)
+    #     self.assertEqual(new_image.id, 1)
 
-    def get_image_by_id():
-        pass
+    # def test_get_image_by_id(self):
+    #     '''
+    #     test_update_image test case to test if the image object can be queried by its ID
+    #     '''
+    #     self.image.save()
+    #     get_image_by_id = Image.get_image_by_id(1)
+    #     self.assertEqual(get_image_by_id.id, 1)
 
     def test_search_image(self):
         '''
         test_filter_by_location test case to test if the image object is filtered by its category
         '''
-        self.image.save()
-        self.category.save()
         all_instances_of_category = Image.search_image('Fashion')
         self.assertEqual(len(all_instances_of_category), 1)
 
@@ -95,11 +103,5 @@ class TestGalleryApp(TestCase):
         '''
         test_filter_by_location test case to test if the image object is filtered by its location
         '''
-        self.image.save()
-        self.location.save()
         all_instances_of_location = Image.filter_by_location('Nairobi')
         self.assertEqual(len(all_instances_of_location), 1)
-    
-        
-
-        
