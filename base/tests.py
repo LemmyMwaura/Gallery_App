@@ -6,6 +6,7 @@ class TestGalleryApp(TestCase):
         '''
         Sets up the default ID field for the Object below in the database. (Django doesn't reset auto ID fields 
         for each test case)
+        Saves the new objects id.
         '''
         cls.obj_id = Image.objects.create(
             image='/image/location', 
@@ -98,7 +99,6 @@ class TestGalleryApp(TestCase):
         '''
         test_update_image test case to test if the image object can be queried by its ID
         '''
-        self.image.save()
         get_image_by_id = Image.get_image_by_id(self.obj_id)
         self.assertEqual(get_image_by_id.id, 1)
 
