@@ -87,7 +87,7 @@ class TestGalleryApp(TestCase):
 
     def test_search_image(self):
         '''
-        Filter Image by its category
+        test_filter_by_location test case to test if the image object is filtered by its category
         '''
         self.image.save()
         self.category.save()
@@ -95,8 +95,15 @@ class TestGalleryApp(TestCase):
         all_instances_of_category = Image.search_image('Fashion')
         self.assertEqual(len(all_instances_of_category), 1)
 
-    # def filter_by_location(cls,location):
-    #     pass
+    def test_filter_by_location(self):
+        '''
+        test_filter_by_location test case to test if the image object is filtered by its location
+        '''
+        self.image.save()
+        self.category.save()
+        self.location.save()
+        all_instances_of_location = Image.filter_by_location('Nairobi')
+        self.assertEqual(len(all_instances_of_location), 1)
     
         
 
