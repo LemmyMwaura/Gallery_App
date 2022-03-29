@@ -41,13 +41,14 @@ img{
     font-size: 1.3rem;
     color: white;
 }
+
 /* Modal */
 .modal{
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, 500%);
-    background-color: hsl(38, 4%, 62%);
+    background-color: #686868;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
@@ -81,8 +82,16 @@ img{
     opacity: 1;
 }
 
+.modal-pic{
+    aspect-ratio: 8/8;
+    object-fit: cover;
+}
+
 .details{
     justify-self:flex-end;
+}
+
+.details-items{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 0.5rem;
@@ -90,11 +99,96 @@ img{
 
 .desc{
     padding: 1rem;
-    background-color: hsl(38, 5%, 65%);
-    color: #7b7975;
+    background-color: #9B9B9B;
+}
+
+.tooltip-wrapper{
+    display: flex;
+    align-items: center;
+    column-gap: 0.3rem;
+    color: #47362B;
 }
 
 .tooltip{
-    font-size: 1rem;
-    color: hsl(0, 0%, 0%);
+    color: #47362B;
+    font-size: 1.7rem;
+}
+
+.copy{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.copy-text {
+    padding: 10px;
+    font-size: 16px;
+    color: #47362B;
+    text-transform: capitalize;
+}
+
+.copy-btn{
+    position: relative;
+    padding: 10px;
+    color:  #47362B;
+    font-size: 18px;
+    border-radius: 0.5rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: 100ms ease;
+    background: hsl(168, 94%, 32%);
+}
+
+.copy-btn:active{
+    transform: scale(0.88);
+}
+
+.copy-btn::before{
+    content: 'copied';
+    position: absolute;
+    padding: 8px;
+    border-radius: 0.8rem;
+    font-size: 15px;
+    top: -45px;
+    right: -10px;
+    background: hsl(168, 94%, 32%);
+    color: #000;
+    opacity: 0;
+}
+
+.copy-btn::after{
+    content: '';
+    position: absolute;
+    top: -18px;
+    right: 14.5px;
+    width: 10px;
+    height: 10px;
+    background: hsl(168, 94%, 32%);
+    transform: rotate(45deg);
+    opacity: 0;
+}
+
+.copy-btn.active::before,
+.copy-btn.active::after {
+    opacity: 1;
+}
+
+@media  screen and (max-width: 700px) {
+    .modal{
+        display: flex;
+        flex-direction: column;
+        max-height: 70vh;
+        overflow: scroll;
+        padding: 1rem;
+    }
+
+    .desc{
+        padding: 0.3rem;
+    }
+    
+    .modal-pic{
+        max-height: 300px;
+    }
 }

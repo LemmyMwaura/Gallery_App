@@ -1,3 +1,4 @@
+// modal
 const allImages = document.querySelectorAll('.picture')
 const overlay = document.getElementById('overlay')
 
@@ -25,4 +26,15 @@ function closeModal(modal){
     if (modal == null) return
     modal.classList.remove('active')
     overlay.classList.remove('active')
+    copyButton.classList.remove('active')
+}
+
+// Copy link
+const copyButton = document.querySelector('.copy-btn')
+copyButton.addEventListener('click', copyLink)
+
+function copyLink(){
+    let link = document.querySelector('.modal-pic')
+    navigator.clipboard.writeText(link.src)
+    copyButton.classList.add('active')
 }

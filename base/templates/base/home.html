@@ -25,11 +25,44 @@
                 {% endif %}
             </div>
             <div class="details">
-                <div class="desc"> <i class='bx bxs-book-content tooltip'></i>{{ image.description }}</div>
-                <div class="desc"> <i class='bx bxs-map tooltip'></i>{{ image.location }}</div>
-                <div class="desc"> <i class='bx bxs-carousel tooltip'></i>{{ image.category }}</div>
-                <div class="desc"> <i class='bx bxs-stopwatch tooltip'></i>{{ image.updated|timesince }} ago </div>
-                <div class="desc"> <i class='bx bxs-calendar tooltip'></i>{{ image.created|timesince }} ago </div>
+                <div class="details-items">
+                    <div class="desc">
+                        <div class="title">description</div> 
+                        <div class="tooltip-wrapper">
+                            <i class='bx bxs-book-content tooltip'></i>{{ image.description }}
+                        </div>
+                    </div>
+                    <div class="desc"> 
+                        <div class="title">location</div>
+                        <div class="tooltip-wrapper">
+                            <i class='bx bxs-map tooltip'></i>{{ image.location }}
+                        </div> 
+                    </div>
+                    <div class="desc">
+                        <div class="title">category</div>
+                        <div class="tooltip-wrapper">
+                            <i class='bx bxs-carousel tooltip'></i>{{ image.category }}
+                        </div>
+                    </div>
+                    <div class="desc"> 
+                        <div class="title">Last Updated</div>
+                        <div class="tooltip-wrapper">
+                            <i class='bx bxs-stopwatch tooltip'></i>{{ image.updated|timesince }} ago 
+                        </div>
+                    </div>
+                    <div class="desc"> 
+                        <div class="title">Created</div>
+                        <div class="tooltip-wrapper">
+                            <i class='bx bxs-calendar tooltip'></i>{{ image.created|timesince }} ago
+                        </div>  
+                    </div>
+                </div>
+                <div class="copy">
+                    <span class="copy-text">Copy Image Link</span>
+                    <button class="copy-btn">
+                        <i class='bx bx-copy'></i>
+                    </button>
+                </div>
             </div>
         </div> 
         {% endfor %}

@@ -94,6 +94,8 @@ if config('MODE')=="dev":
         }
        
     }
+    ALLOWED_HOSTS = []
+    
 else:
     DATABASES = {
        'default': dj_database_url.config(
@@ -101,10 +103,12 @@ else:
         )
     }
 
+    ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
+
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
