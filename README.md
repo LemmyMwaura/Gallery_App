@@ -14,7 +14,7 @@ Gallery application. Built with Django
 ___
 
 ### Screenshot
-![Website](static/images/web.png)
+![Website](static/images/image.png)
 ___
 ---
 ### Introduction
